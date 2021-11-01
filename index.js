@@ -43,7 +43,7 @@ async function run() {
       res.send(orders);
     });
     // specific service
-    app.get("/orders/:id", async (req, res) => {
+    app.get("/specificorder/:id", async (req, res) => {
       const id = req.params.id;
       // console.log("order_id", id);
       const query = { _id: ObjectId(id) };
