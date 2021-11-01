@@ -82,7 +82,7 @@ async function run() {
       const result = await clientCollection.insertOne(orders);
 
       console.log("orders from server", orders);
-      res.send("order reached to server", result);
+      res.send(result);
     });
     app.post("/services", async (req, res) => {
       const service = req.body;
