@@ -48,7 +48,7 @@ async function run() {
       // console.log("order_id", id);
       const query = { _id: ObjectId(id) };
       const order = await serviceCollection.findOne(query);
-      console.log("specific order", order);
+      // console.log("specific order", order);
       res.send(order);
     });
 
@@ -56,7 +56,7 @@ async function run() {
     app.put("/orders/:id", async (req, res) => {
       const id = req.params.id;
       const updatedOrder = req.body;
-      console.log("updated request", updatedOrder);
+      // console.log("updated request", updatedOrder);
       const filter = { _id: ObjectId(id) };
       const options = { upsert: true };
       const updateDoc = {
@@ -72,7 +72,7 @@ async function run() {
         updateDoc,
         options
       );
-      console.log("updating user", req.params.id);
+      // console.log("updating user", req.params.id);
       res.json(result);
     });
 
@@ -81,15 +81,15 @@ async function run() {
       const orders = req.body;
       const result = await clientCollection.insertOne(orders);
 
-      console.log("orders from server", orders);
+      // console.log("orders from server", orders);
       res.send(result);
     });
     app.post("/services", async (req, res) => {
       const service = req.body;
-      console.log("Hit the post api", service);
+      // console.log("Hit the post api", service);
       res.send("post hitted");
       const result = await serviceCollection.insertOne(service);
-      console.log(result);
+      // console.log(result);
       res.json(result);
     });
 
@@ -111,5 +111,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("listening port", port);
+  // console.log("listening port", port);
 });
