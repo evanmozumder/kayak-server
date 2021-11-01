@@ -84,6 +84,14 @@ async function run() {
       console.log("orders from server", orders);
       res.send("order reached to server", result);
     });
+    app.post("/services", async (req, res) => {
+      const service = req.body;
+      console.log("Hit the post api", service);
+      res.send("post hitted");
+      const result = await serviceCollection.insertOne(service);
+      console.log(result);
+      res.json(result);
+    });
 
     /* // DELETE 
     app.delete('/orders/:id',async(req,res)=> {
